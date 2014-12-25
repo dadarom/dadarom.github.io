@@ -1,0 +1,69 @@
+---
+layout:    default
+---
+
+<div class="index-content about">
+    <div class="section">
+        <ul class="artical-cate">
+			<li><a href="/"><span>Blog</span></a></li>
+			<li style="text-align:center"><a href="/category"><span>Category</span></a></li>
+			<li style="text-align:right" class="on"><a href="/about"><span>About</span></a></li>
+		</ul>
+
+		<div class="cate-bar"><span id="cateBar"></span></div>
+
+        <!-- <ul class="artical-list"></ul> -->
+		<div class="about-page">
+			{{ content }}
+		</div>
+    </div>
+    <div class="aside">
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function(){
+        function animateBar($item,noAni){
+            var spanLeft = $item.find('span').offset().left;
+            var conLeft = $item.parent().offset().left;
+            var left = spanLeft - conLeft;
+            var width = $item.find('span').width() + 2;
+
+            if(noAni){
+                $('#cateBar').css({left:left,width:width})
+            }else{
+                $('#cateBar').stop().animate({left:left,width:width},300)
+            }
+        }
+
+        var waitForFinalEvent = (function () {
+            var timers = {};
+            return function (callback, ms, uniqueId) {
+                if (!uniqueId) {
+                    uniqueId = "Don't call this twice without a uniqueId";
+                }
+                if (timers[uniqueId]) {
+                    clearTimeout (timers[uniqueId]);
+                }
+                timers[uniqueId] = setTimeout(callback, ms);
+            };
+        })();
+
+        $('.artical-cate li').mouseenter(function(){
+            animateBar($(this));
+        }).mouseleave(function(){
+            animateBar($('.artical-cate .on'));
+        });
+
+        $(window).resize(function(e){
+            waitForFinalEvent(function(){
+                animateBar($('.artical-cate .on'));
+            })
+        })
+        animateBar($('.artical-cate .on'),true);
+    });
+</script>
+
+<script src="/js/page.js" type="text/javascript"></script>

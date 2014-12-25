@@ -3,15 +3,15 @@
 <head>
     <!--   Author: LEI   -->
     <meta charset="utf-8" />
-    <title>出错啦！ | dadarom.github.io</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="author" content="Lei" />
     <meta name="renderer" content="webkit">
-    <meta name="description" content=" Lei's Blog  " />
+    <meta name="description" content="{% if page.description %} {{ page.description }} {% else %} {{ site.description }} {% endif %} " />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <link rel="stylesheet" href="/css/default.css" type="text/css" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
 	
     <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -30,13 +30,7 @@
         </div>
     </div>
 
-    <div id="content">
-    <h1>出错啦。。。</h1>
-
-<p>看看别的吧先</p>
-
-</div>
-
+    {{ content }}
 
     <!--*********************************************************-->
     <!--****** 宝贝儿，看见这个时候，删掉下面的统计代码哦~ ******-->
