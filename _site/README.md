@@ -5,11 +5,11 @@ dadarom.github.io
 --
 
 --
-thanks to P233 for the template: 
-https://github.com/P233/3-Jekyll
+Thanks to NingG for the template: 
+http://ningg.github.io/
 --
 Blog
-http://peiwen.lu/css3-timeline/
+http://ningg.github.io
 --
 page
-http://www.v2ex.com/t/91445
+http://ningg.github.io/build-blog-with-github/
