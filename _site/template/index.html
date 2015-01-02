@@ -3,10 +3,10 @@
 <head>
     <!--   Author: LEI   -->
     <meta charset="utf-8" />
-    <title>Wiki | dadarom.github.io</title>
+    <title>Example | dadarom.github.io</title>
     <meta name="author" content="Lei" />
     <meta name="renderer" content="webkit">
-    <meta name="description" content=" my wiki  " />
+    <meta name="description" content=" 存在感对于每个人的生活有多么的重要，可能平时并不是太关注，其实他就是生活的全部  " />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <link rel="stylesheet" href="/css/default.css" type="text/css" />
@@ -43,31 +43,77 @@
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/wiki.html" title="Wiki">Wiki</a></h1>
-        <p class="entry-date"></p>
-        <h2 id="hadoop-common-compile-error">1. hadoop common compile error</h2>
-
-<blockquote>
-
-  <p>```
-[jvm’s]</p>
-</blockquote>
-
-<p><a href="https://github.com/google/protobuf">架构</a></p>
-
-<p><a href="http://hadoop-common.472056.n3.nabble.com/failed-to-build-trunk-what-s-wrong-td3660097.html">tools</a></p>
-
-<p><a href="http://m.oschina.net/blog/356552">Hadoop生态</a></p>
-
-<p>```</p>
+        <h1 class="entry-title"><a href="/template" title="Example">Example</a></h1>
+        <p class="entry-date">2015-01-02</p>
+        <p>example<code>SSH Keys</code>example</p>
 
 <p><code>
-export LD_LIBRARY_PATH=/usr/local/lib
+example`SSH Keys`example  
 </code></p>
 
-<h1 id="be-attetion-to-version-hadoop200----protobuf-240a">Be attetion to version: hadoop2.0.0 –&gt; protobuf-2.4.0a</h1>
+<p>初步分析，在[GitHub]上搭建博客，实质是：将自己的博客内容上传到GitHub上<em>（因为GitHub提供了空间）；</em>总结一下，对应3个必要步骤：</p>
 
-<p>[proto buffers error] , [proto buffers install] , [Ubuntu编译Hadoop源码异常总结]</p>
+<ol>
+  <li>GitHub上创建工程、并且能够将GitHub上的文件/代码，下载到本地；</li>
+  <li>将本地的文件/代码，上传到GitHub上；</li>
+  <li>配置GitHub，使其对外提供私人博客的访问页面；</li>
+</ol>
+
+<p>* \</p>
+
+<p><em>single asterisk</em><br />
+<strong>double asterisk</strong> </p>
+
+<p><strong><em>double asterisk</em></strong></p>
+
+<p><em>single underscore</em></p>
+
+<p><strong>double underscore</strong></p>
+
+<h1 id="heading-1">Heading 1</h1>
+
+<h2 id="heading-2">Heading 2</h2>
+
+<p>详细阅读”<strong>3.2如何搭建博客</strong>“中提到的</p>
+
+<blockquote>
+  <p>The overriding design goal for Markdown’s
+formatting syntax is to make it as readable
+as possible. The idea is that a 
+1 </p>
+</blockquote>
+
+<blockquote>
+  <p>2</p>
+</blockquote>
+
+<pre><code>/*
+If you have sufficient control over the publishing process
+(e.g. you are running Jekyll yourself), an easy solution is
+to switch the markdown parser to one that supports TeX.
+*/
+
+//For example, using kramdown:
+gem install kramdown
+
+//Change the markdown line in _config.yml to
+markdown: kramdown
+
+//and add something like
+&lt;script type="text/javascript" 
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;
+&lt;/script&gt;
+//to _layouts/default.html. 
+
+//Now you can simply mark any mathematics in your posts with $$
+</code></pre>
+
+<ul>
+  <li><a href="www.csdn.net">CSDN</a></li>
+  <li><a href="https://help.github.com/articles/set-up-git">安装使用Git（GitHub上传、下载文件的工具）</a></li>
+</ul>
+
+<p><img src="/images/side-background.jpg" alt="git-github" /></p>
 
 
 

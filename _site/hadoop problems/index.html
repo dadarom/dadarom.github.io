@@ -3,10 +3,10 @@
 <head>
     <!--   Author: LEI   -->
     <meta charset="utf-8" />
-    <title>Wiki | dadarom.github.io</title>
+    <title>Hadoop problems | dadarom.github.io</title>
     <meta name="author" content="Lei" />
     <meta name="renderer" content="webkit">
-    <meta name="description" content=" my wiki  " />
+    <meta name="description" content=" collect hadoop dev problems  " />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <link rel="stylesheet" href="/css/default.css" type="text/css" />
@@ -43,23 +43,17 @@
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/wiki.html" title="Wiki">Wiki</a></h1>
-        <p class="entry-date"></p>
+        <h1 class="entry-title"><a href="/hadoop%20problems" title="Hadoop problems">Hadoop problems</a></h1>
+        <p class="entry-date">2015-01-02</p>
         <h2 id="hadoop-common-compile-error">1. hadoop common compile error</h2>
 
 <blockquote>
 
-  <p>```
-[jvm’s]</p>
+  <p><code>
+Failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.6:run 
+(compile-proto) on project hadoop-common: An Ant BuildException has occured: exec returned: 127 -&gt; [Help 1]
+</code></p>
 </blockquote>
-
-<p><a href="https://github.com/google/protobuf">架构</a></p>
-
-<p><a href="http://hadoop-common.472056.n3.nabble.com/failed-to-build-trunk-what-s-wrong-td3660097.html">tools</a></p>
-
-<p><a href="http://m.oschina.net/blog/356552">Hadoop生态</a></p>
-
-<p>```</p>
 
 <p><code>
 export LD_LIBRARY_PATH=/usr/local/lib
@@ -67,7 +61,7 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 <h1 id="be-attetion-to-version-hadoop200----protobuf-240a">Be attetion to version: hadoop2.0.0 –&gt; protobuf-2.4.0a</h1>
 
-<p>[proto buffers error] , [proto buffers install] , [Ubuntu编译Hadoop源码异常总结]</p>
+<p><a href="http://hadoop-common.472056.n3.nabble.com/failed-to-build-trunk-what-s-wrong-td3660097.html">proto buffers error</a> , <a href="https://github.com/google/protobuf">proto buffers install</a> , <a href="http://m.oschina.net/blog/356552">Ubuntu编译Hadoop源码异常总结</a></p>
 
 
 

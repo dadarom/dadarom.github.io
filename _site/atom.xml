@@ -4,7 +4,7 @@
    <title>dadarom.github.io</title>
    <link href="http://dadarom.github.io/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://dadarom.github.io" rel="alternate" type="text/html" />
-   <updated>2015-01-02T15:56:54+08:00</updated>
+   <updated>2015-01-02T21:38:29+08:00</updated>
    <id>http://dadarom.github.io</id>
    <author>
      <name></name>
@@ -13,159 +13,252 @@
 
    
    <entry>
-     <title>Kafka 0.8.1：Monitoring--2</title>
-     <link href="http://dadarom.github.com/Example-kafka-monitoring-config2"/>
-     <updated>2014-12-09T00:00:00+08:00</updated>
-     <id>http://ningg.github.com/Example-kafka-monitoring-config2</id>
-     <content type="html">&lt;blockquote&gt;
-  &lt;p&gt;本文原文来自[Kafka 0.8.x Monitoring][Kafka 0.8.x Monitoring]&lt;/p&gt;
+     <title>linux wiki</title>
+     <link href="http://dadarom.github.com/wiki-linux"/>
+     <updated>2015-01-02T00:00:00+08:00</updated>
+     <id>http://ningg.github.com/wiki-linux</id>
+     <content type="html"></content>
+   </entry>
+   
+   <entry>
+     <title>Wiki</title>
+     <link href="http://dadarom.github.com/wiki"/>
+     <updated>2015-01-02T00:00:00+08:00</updated>
+     <id>http://ningg.github.com/wiki</id>
+     <content type="html">&lt;h2 id=&quot;my-wiki&quot;&gt;My Wiki&lt;/h2&gt;
+
+&lt;blockquote&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/google/protobuf&quot;&gt;jvm’s&lt;/a&gt; &lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/google/protobuf&quot;&gt;架构&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://hadoop-common.472056.n3.nabble.com/failed-to-build-trunk-what-s-wrong-td3660097.html&quot;&gt;tools&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://m.oschina.net/blog/356552&quot;&gt;Hadoop生态&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/google/protobuf&quot;&gt;Linux&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Kafka uses &lt;code&gt;Yammer Metrics&lt;/code&gt; for metrics reporting in both the server and the client. This can be configured to report stats using pluggable stats reporters to hook up to your monitoring system.&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Example</title>
+     <link href="http://dadarom.github.com/template"/>
+     <updated>2015-01-02T00:00:00+08:00</updated>
+     <id>http://ningg.github.com/template</id>
+     <content type="html">&lt;p&gt;example&lt;code&gt;SSH Keys&lt;/code&gt;example&lt;/p&gt;
 
-&lt;p&gt;The easiest way to see the available metrics to fire up jconsole and point it at a running kafka client or server; this will all browsing all metrics with JMX.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;
+example`SSH Keys`example  
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;We pay particular we do graphing and alerting on the following metrics:&lt;/p&gt;
+&lt;p&gt;初步分析，在[GitHub]上搭建博客，实质是：将自己的博客内容上传到GitHub上&lt;em&gt;（因为GitHub提供了空间）；&lt;/em&gt;总结一下，对应3个必要步骤：&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-      &lt;th&gt;Mbean name&lt;/th&gt;
-      &lt;th&gt;Normal value&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Message in rate&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”AllTopicsMessagesInPerSec”, type=”BrokerTopicMetrics”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Byte in rate&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”AllTopicsBytesInPerSec”, type=”BrokerTopicMetrics”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Request rate&lt;/td&gt;
-      &lt;td&gt;“kafka.network”: name=”{Produce&lt;code&gt;|&lt;/code&gt;Fetch-consumer&lt;code&gt;|&lt;/code&gt;Fetch-follower}-RequestsPerSec”, type=”RequestMetrics”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Byte out rate&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”AllTopicsBytesOutPerSec”, type=”BrokerTopicMetrics”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Log flush rate and time&lt;/td&gt;
-      &lt;td&gt;“kafka.log”: name=”LogFlushRateAndTimeMs”, type=”LogFlushStats”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;# of under replicated partitions&lt;/td&gt;
-      &lt;td&gt;(&lt;code&gt;|ISR| &amp;lt; |all replicas|&lt;/code&gt;) “kafka.server”: name=”UnderReplicatedPartitions”, type=”ReplicaManager”&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Is controller active on broker&lt;/td&gt;
-      &lt;td&gt;“kafka.controller”: name=”ActiveControllerCount”, type=”KafkaController”&lt;/td&gt;
-      &lt;td&gt;only one broker in the cluster should have 1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Leader election rate&lt;/td&gt;
-      &lt;td&gt;“kafka.controller”: name=”LeaderElectionRateAndTimeMs”, type=”ControllerStats”&lt;/td&gt;
-      &lt;td&gt;non-zero when there are broker failures&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Unclean leader election rate&lt;/td&gt;
-      &lt;td&gt;“kafka.controller”: name=”UncleanLeaderElectionsPerSec”, type=”ControllerStats”&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Partition counts&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”PartitionCount”, type=”ReplicaManager”&lt;/td&gt;
-      &lt;td&gt;mostly even across brokers&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Leader replica counts&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”LeaderCount”, type=”ReplicaManager”&lt;/td&gt;
-      &lt;td&gt;mostly even across brokers&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;ISR shrink rate&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”ISRShrinksPerSec”, type=”ReplicaManager”&lt;/td&gt;
-      &lt;td&gt;If a broker goes down, ISR for some of the partitions will shrink. When that broker is up again, ISR will be expanded once the replicas are fully caught up. Other than that, the expected value for both ISR shrink rate and expansion rate is 0.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;ISR expansion rate&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”ISRExpandsPerSec”, type=”ReplicaManager”&lt;/td&gt;
-      &lt;td&gt;See above&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max lag in messages btw follower and leader replicas&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”([-.\w]+)-MaxLag”, type=”ReplicaFetcherManager”&lt;/td&gt;
-      &lt;td&gt;&amp;lt; replica.lag.max.messages&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Lag in messages per follower replica&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”([-.\w]+)-ConsumerLag”, type=”FetcherLagMetrics”&lt;/td&gt;
-      &lt;td&gt;&amp;lt; replica.lag.max.messages&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Requests waiting in the producer purgatory&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”PurgatorySize”, type=”ProducerRequestPurgatory”&lt;/td&gt;
-      &lt;td&gt;non-zero if ack=-1 is used&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Requests waiting in the fetch purgatory&lt;/td&gt;
-      &lt;td&gt;“kafka.server”: name=”PurgatorySize”, type=”FetchRequestPurgatory”&lt;/td&gt;
-      &lt;td&gt;size depends on fetch.wait.max.ms in the consumer&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Request total time&lt;/td&gt;
-      &lt;td&gt;“kafka.network”: name=”{Produce&lt;code&gt;|&lt;/code&gt;Fetch-Consumer&lt;code&gt;|&lt;/code&gt;Fetch-Follower}-TotalTimeMs”,type=”RequestMetrics”&lt;/td&gt;
-      &lt;td&gt;broken into queue, local, remote and response send time&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Time the request waiting in the request queue&lt;/td&gt;
-      &lt;td&gt;“kafka.network”: name=”{Produce&lt;code&gt;|&lt;/code&gt;Fetch-Consumer&lt;code&gt;|&lt;/code&gt;Fetch-Follower}-QueueTimeMs”, type=”RequestMetrics”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Time the request being processed at the leader&lt;/td&gt;
-      &lt;td&gt;“kafka.network”: name=”{Produce&lt;code&gt;|&lt;/code&gt;Fetch-Consumer&lt;code&gt;|&lt;/code&gt;Fetch-Follower}-LocalTimeMs”, type=”RequestMetrics”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Time the request waits for the follower&lt;/td&gt;
-      &lt;td&gt;“kafka.network”: name=”{Produce&lt;code&gt;|&lt;/code&gt;Fetch-Consumer&lt;code&gt;|&lt;/code&gt;Fetch-Follower}-RemoteTimeMs”, type=”RequestMetrics”&lt;/td&gt;
-      &lt;td&gt;non-zero for produce requests when ack=-1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Time to send the response&lt;/td&gt;
-      &lt;td&gt;“kafka.network”: name=”{Produce&lt;code&gt;|&lt;/code&gt;Fetch-Consumer&lt;code&gt;|&lt;/code&gt;Fetch-Follower}-ResponseSendTimeMs”, type=”RequestMetrics”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Number of messages the consumer lags behind the producer by&lt;/td&gt;
-      &lt;td&gt;“kafka.consumer”: name=”([-.\w]+)-MaxLag”, type=”ConsumerFetcherManager”&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;ol&gt;
+  &lt;li&gt;GitHub上创建工程、并且能够将GitHub上的文件/代码，下载到本地；&lt;/li&gt;
+  &lt;li&gt;将本地的文件/代码，上传到GitHub上；&lt;/li&gt;
+  &lt;li&gt;配置GitHub，使其对外提供私人博客的访问页面；&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;We recommend monitor GC time and other stats and various server stats such as CPU utilization, I/O service time, etc. On the client side, we recommend monitor the message/byte rate (global and per topic), request rate/size/time, and on the consumer side, max lag in messages among all partitions and min fetch request rate. For a consumer to keep up, max lag needs to be less than a threshold and min fetch rate needs to be larger than 0.
-Audit&lt;/p&gt;
+&lt;p&gt;* \&lt;/p&gt;
 
-&lt;p&gt;The final alerting we do is on the correctness of the data delivery. We audit that every message that is sent is consumed by all consumers and measure the lag for this to occur. For important topics we alert if a certain completeness is not achieved in a certain time period. The details of this are discussed in KAFKA-260.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single asterisk&lt;/em&gt;&lt;br /&gt;
+&lt;strong&gt;double asterisk&lt;/strong&gt; &lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;note(ningg)&lt;/strong&gt;：Kafka中controller，MBean，两个名词的含义？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;double asterisk&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;参考来源&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;single underscore&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;double underscore&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
+
+&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
+
+&lt;p&gt;详细阅读”&lt;strong&gt;3.2如何搭建博客&lt;/strong&gt;“中提到的&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The overriding design goal for Markdown’s
+formatting syntax is to make it as readable
+as possible. The idea is that a 
+1 &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;/*
+If you have sufficient control over the publishing process
+(e.g. you are running Jekyll yourself), an easy solution is
+to switch the markdown parser to one that supports TeX.
+*/
+
+//For example, using kramdown:
+gem install kramdown
+
+//Change the markdown line in _config.yml to
+markdown: kramdown
+
+//and add something like
+&amp;lt;script type=&quot;text/javascript&quot; 
+src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;
+&amp;lt;/script&amp;gt;
+//to _layouts/default.html. 
+
+//Now you can simply mark any mathematics in your posts with $$
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://kafka.apache.org/documentation.html&quot;&gt;Kafka 0.8.* Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;www.csdn.net&quot;&gt;CSDN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/set-up-git&quot;&gt;安装使用Git（GitHub上传、下载文件的工具）&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/side-background.jpg&quot; alt=&quot;git-github&quot; /&gt;&lt;/p&gt;
+
+</content>
+   </entry>
+   
+   <entry>
+     <title>linux command</title>
+     <link href="http://dadarom.github.com/linux%20cmds"/>
+     <updated>2015-01-02T00:00:00+08:00</updated>
+     <id>http://ningg.github.com/linux cmds</id>
+     <content type="html">&lt;h2 id=&quot;linux-command&quot;&gt;1. linux command&lt;/h2&gt;
+
+&lt;h3 id=&quot;nets&quot;&gt;nets&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;iotop&lt;/code&gt; &lt;code&gt;iostat&lt;/code&gt; &lt;code&gt;nslookup&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;awk&quot;&gt;awk&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;
+lsof -i:2181|grep TCP|grep LISTEN|grep IPv6|awk '{printf(&quot;%d\t%s\n&quot;),$2,$1}'
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;replace-string&quot;&gt;Replace string&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;61s/{targetStr}/{sourceStr}/ `
+46,61s/{targetStr}/{sourceStr}/
+%s/{targetStr}/{sourceStr}/g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;watch&quot;&gt;Watch&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;watch -n  1 -d &quot;sudo  netstat -anp|grep 9092|wc -l &quot;
+watch -d 'curl -s http://127.0.0.1:34561/metrics | python -m json.tool '
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;修改权限与属性&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;chown&lt;/code&gt; &lt;code&gt;chgrp&lt;/code&gt; &lt;code&gt;chmod&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;disk-useage&quot;&gt;Disk Useage&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;du -sh&lt;/code&gt;
+&lt;code&gt;df&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;args&quot;&gt;args&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;
+jps -m|grep flume2hbase${i}|awk '{print $1}' | xargs kill
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;grep&quot;&gt;grep&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt; grep -R --include=*.xml  'com.google.protobuf' ./ &lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql-command&quot;&gt;2. mysql command&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;load data into mysql&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mysql -u root -p --local-infile mybatis -h localhost -P 3306  -e &quot;LOAD DATA LOCAL INFILE '/home/leo/mysql-data/rt_20141221.data' INTO TABLE nginx_url_referer_day FIELDS TERMINATED BY ',' (host,@var1,url,referer,2xx3xx_body_size,4xx_body_size,5xx_body_size,all_body_size,2xx3xx_response_time,4xx_response_time,5xx_response_time,all_response_time,2xx3xx_count,4xx_count,5xx_count,all_count) set source_time=str_to_date(@var1,'%d/%M/%Y:%H:%i:%s');&quot; &amp;gt;&amp;gt;logs/mainloader.log 2&amp;gt;&amp;amp;1
+
+LOAD DATA INFILE '/home/leo/test.data' INTO TABLE nginx_url_referer_day FIELDS TERMINATED BY ','  (host,@var1,url,referer,2xx3xx_body_size,4xx_body_size,5xx_body_size,all_body_size,2xx3xx_response_time,4xx_response_time,5xx_response_time,all_response_time,2xx3xx_count,4xx_count,5xx_count,all_count)  set source_time=str_to_date(@var1,'%d/%M/%Y:%H:%i:%s');
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;linux-shell&quot;&gt;3. linux shell&lt;/h2&gt;
+
+&lt;h3 id=&quot;restart-supervisor&quot;&gt;3.1 &lt;strong&gt;Restart Supervisor&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env bash
+id=`/usr/local/jdk1.6.0_38/bin/jps -ml | grep -i supervisor|grep -v grep |awk '{print $1}'`
+kill -9 $id
+mv /apps/svr/storm-0.9.0.1/conf/storm.yaml /apps/svr/storm-0.9.0.1/conf/storm.yaml.bak
+mv /apps/svr/storm-0.9.0.1/conf/storm.yaml.20141015.bak /apps/svr/storm-0.9.0.1/conf/storm.yaml
+#cp -r /apps/svr/storm-0.9.0.1/storm-local /apps/svr/storm-0.9.0.1/storm-local-bak
+#rm -rf /apps/svr/storm-0.9.0.1/storm-local/*
+mv /apps/svr/storm-0.9.0.1/storm-local /apps/svr/storm-0.9.0.1/storm-local-bak
+mkdir -p /apps/svr/storm-0.9.0.1/storm-local/
+nohup /apps/svr/storm-0.9.0.1/storm supervisor &amp;gt;/dev/null 2&amp;gt;&amp;amp;1 &amp;amp;
+
+
+#!/usr/bin/env bash
+for supervisorIp in `cat /apps/svr/tools/supervisorhosts`;
+   do
+      echo $supervisorIp
+       ssh $supervisorIp &quot;sh /apps/svr/storm-0.9.0.1/conf/supervisor-chang.sh&quot;
+       #ssh 192.201.110.39  &quot;echo 2 &amp;gt;  /apps/svr/storm-0.9.0.1/conf/sc.txt&quot;
+   done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;restart-flume-process&quot;&gt;3.2 &lt;strong&gt;Restart flume process&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;==============start=================================
+for i in {1..6}
+do
+nohup bin/flume-ng agent -n agent-nginx2hbase${i} -c conf/flume2hbase${i} -f conf/flume2hbase${i}/agent-server${i}.conf &amp;amp;
+#sleep 20s
+done
+
+==============stop=================================
+for i in {1..6}
+do
+pid=`jps -m|grep flume2hbase${i}|awk '{print $1}'`
+echo &quot;flume instance ${i} : pid is ${pid}&quot;
+if [ ! -z  $pid ]
+then
+        kill $pid
+        sleep 1s
+        pid=`jps -m|grep flume2hbase${i}|awk '{print $1}'`
+        if [ ! -z $pid ]
+        then
+                kill -9 $pid
+        fi
+else
+        echo &quot;flume instance ${i} already killed&quot;       
+fi
+sleep 3s
+done
+===================================================
+&lt;/code&gt;&lt;/pre&gt;
+
+</content>
+   </entry>
+   
+   <entry>
+     <title>Hadoop problems</title>
+     <link href="http://dadarom.github.com/hadoop%20problems"/>
+     <updated>2015-01-02T00:00:00+08:00</updated>
+     <id>http://ningg.github.com/hadoop problems</id>
+     <content type="html">&lt;h2 id=&quot;hadoop-common-compile-error&quot;&gt;1. hadoop common compile error&lt;/h2&gt;
+
+&lt;blockquote&gt;
+
+  &lt;p&gt;&lt;code&gt;
+Failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.6:run 
+(compile-proto) on project hadoop-common: An Ant BuildException has occured: exec returned: 127 -&amp;gt; [Help 1]
+&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;
+export LD_LIBRARY_PATH=/usr/local/lib
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;be-attetion-to-version-hadoop200----protobuf-240a&quot;&gt;Be attetion to version: hadoop2.0.0 –&amp;gt; protobuf-2.4.0a&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://hadoop-common.472056.n3.nabble.com/failed-to-build-trunk-what-s-wrong-td3660097.html&quot;&gt;proto buffers error&lt;/a&gt; , &lt;a href=&quot;https://github.com/google/protobuf&quot;&gt;proto buffers install&lt;/a&gt; , &lt;a href=&quot;http://m.oschina.net/blog/356552&quot;&gt;Ubuntu编译Hadoop源码异常总结&lt;/a&gt;&lt;/p&gt;
 
 </content>
    </entry>

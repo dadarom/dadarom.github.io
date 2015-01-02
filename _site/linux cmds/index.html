@@ -3,10 +3,10 @@
 <head>
     <!--   Author: LEI   -->
     <meta charset="utf-8" />
-    <title>Wiki | dadarom.github.io</title>
+    <title>linux command | dadarom.github.io</title>
     <meta name="author" content="Lei" />
     <meta name="renderer" content="webkit">
-    <meta name="description" content=" my wiki  " />
+    <meta name="description" content=" linux command  " />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <link rel="stylesheet" href="/css/default.css" type="text/css" />
@@ -43,31 +43,115 @@
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/wiki.html" title="Wiki">Wiki</a></h1>
-        <p class="entry-date"></p>
-        <h2 id="hadoop-common-compile-error">1. hadoop common compile error</h2>
+        <h1 class="entry-title"><a href="/linux%20cmds" title="linux command">linux command</a></h1>
+        <p class="entry-date">2015-01-02</p>
+        <h2 id="linux-command">1. linux command</h2>
 
-<blockquote>
+<h3 id="nets">nets</h3>
 
-  <p>```
-[jvm’s]</p>
-</blockquote>
+<p><code>iotop</code> <code>iostat</code> <code>nslookup</code></p>
 
-<p><a href="https://github.com/google/protobuf">架构</a></p>
-
-<p><a href="http://hadoop-common.472056.n3.nabble.com/failed-to-build-trunk-what-s-wrong-td3660097.html">tools</a></p>
-
-<p><a href="http://m.oschina.net/blog/356552">Hadoop生态</a></p>
-
-<p>```</p>
+<h3 id="awk">awk</h3>
 
 <p><code>
-export LD_LIBRARY_PATH=/usr/local/lib
+lsof -i:2181|grep TCP|grep LISTEN|grep IPv6|awk '{printf("%d\t%s\n"),$2,$1}'
 </code></p>
 
-<h1 id="be-attetion-to-version-hadoop200----protobuf-240a">Be attetion to version: hadoop2.0.0 –&gt; protobuf-2.4.0a</h1>
+<h3 id="replace-string">Replace string</h3>
 
-<p>[proto buffers error] , [proto buffers install] , [Ubuntu编译Hadoop源码异常总结]</p>
+<pre><code>61s/{targetStr}/{sourceStr}/ `
+46,61s/{targetStr}/{sourceStr}/
+%s/{targetStr}/{sourceStr}/g
+</code></pre>
+
+<h3 id="watch">Watch</h3>
+
+<pre><code>watch -n  1 -d "sudo  netstat -anp|grep 9092|wc -l "
+watch -d 'curl -s http://127.0.0.1:34561/metrics | python -m json.tool '
+</code></pre>
+
+<h3 id="section">修改权限与属性</h3>
+
+<p><code>chown</code> <code>chgrp</code> <code>chmod</code></p>
+
+<h3 id="disk-useage">Disk Useage</h3>
+
+<p><code>du -sh</code>
+<code>df</code></p>
+
+<h3 id="args">args</h3>
+
+<p><code>
+jps -m|grep flume2hbase${i}|awk '{print $1}' | xargs kill
+</code></p>
+
+<h3 id="grep">grep</h3>
+<p><code> grep -R --include=*.xml  'com.google.protobuf' ./ </code></p>
+
+<h2 id="mysql-command">2. mysql command</h2>
+
+<p><strong>load data into mysql</strong></p>
+
+<pre><code>mysql -u root -p --local-infile mybatis -h localhost -P 3306  -e "LOAD DATA LOCAL INFILE '/home/leo/mysql-data/rt_20141221.data' INTO TABLE nginx_url_referer_day FIELDS TERMINATED BY ',' (host,@var1,url,referer,2xx3xx_body_size,4xx_body_size,5xx_body_size,all_body_size,2xx3xx_response_time,4xx_response_time,5xx_response_time,all_response_time,2xx3xx_count,4xx_count,5xx_count,all_count) set source_time=str_to_date(@var1,'%d/%M/%Y:%H:%i:%s');" &gt;&gt;logs/mainloader.log 2&gt;&amp;1
+
+LOAD DATA INFILE '/home/leo/test.data' INTO TABLE nginx_url_referer_day FIELDS TERMINATED BY ','  (host,@var1,url,referer,2xx3xx_body_size,4xx_body_size,5xx_body_size,all_body_size,2xx3xx_response_time,4xx_response_time,5xx_response_time,all_response_time,2xx3xx_count,4xx_count,5xx_count,all_count)  set source_time=str_to_date(@var1,'%d/%M/%Y:%H:%i:%s');
+</code></pre>
+
+<h2 id="linux-shell">3. linux shell</h2>
+
+<h3 id="restart-supervisor">3.1 <strong>Restart Supervisor</strong></h3>
+
+<pre><code>#!/usr/bin/env bash
+id=`/usr/local/jdk1.6.0_38/bin/jps -ml | grep -i supervisor|grep -v grep |awk '{print $1}'`
+kill -9 $id
+mv /apps/svr/storm-0.9.0.1/conf/storm.yaml /apps/svr/storm-0.9.0.1/conf/storm.yaml.bak
+mv /apps/svr/storm-0.9.0.1/conf/storm.yaml.20141015.bak /apps/svr/storm-0.9.0.1/conf/storm.yaml
+#cp -r /apps/svr/storm-0.9.0.1/storm-local /apps/svr/storm-0.9.0.1/storm-local-bak
+#rm -rf /apps/svr/storm-0.9.0.1/storm-local/*
+mv /apps/svr/storm-0.9.0.1/storm-local /apps/svr/storm-0.9.0.1/storm-local-bak
+mkdir -p /apps/svr/storm-0.9.0.1/storm-local/
+nohup /apps/svr/storm-0.9.0.1/storm supervisor &gt;/dev/null 2&gt;&amp;1 &amp;
+
+
+#!/usr/bin/env bash
+for supervisorIp in `cat /apps/svr/tools/supervisorhosts`;
+   do
+      echo $supervisorIp
+       ssh $supervisorIp "sh /apps/svr/storm-0.9.0.1/conf/supervisor-chang.sh"
+       #ssh 192.201.110.39  "echo 2 &gt;  /apps/svr/storm-0.9.0.1/conf/sc.txt"
+   done
+</code></pre>
+
+<h3 id="restart-flume-process">3.2 <strong>Restart flume process</strong></h3>
+
+<pre><code>==============start=================================
+for i in {1..6}
+do
+nohup bin/flume-ng agent -n agent-nginx2hbase${i} -c conf/flume2hbase${i} -f conf/flume2hbase${i}/agent-server${i}.conf &amp;
+#sleep 20s
+done
+
+==============stop=================================
+for i in {1..6}
+do
+pid=`jps -m|grep flume2hbase${i}|awk '{print $1}'`
+echo "flume instance ${i} : pid is ${pid}"
+if [ ! -z  $pid ]
+then
+        kill $pid
+        sleep 1s
+        pid=`jps -m|grep flume2hbase${i}|awk '{print $1}'`
+        if [ ! -z $pid ]
+        then
+                kill -9 $pid
+        fi
+else
+        echo "flume instance ${i} already killed"       
+fi
+sleep 3s
+done
+===================================================
+</code></pre>
 
 
 
