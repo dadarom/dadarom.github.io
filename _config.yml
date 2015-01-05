@@ -1,1 +1,23 @@
+#auto: true
+
+# markdown的解析器
+markdown: kramdown
+
+# 代码高亮
 pygments: true
+# 分页设置
+#paginate: 8
+# 链接样式
+permalink: /:title
+
+
+title: dadarom.github.io
+
+# page中head部分的meta元素
+keywords: keywords
+description: Lei's Blog
+
+url: http://dadarom.github.io
+feed: /atom.xml
+atom_path : /atom.xml
+author_info: <a href="http://dadarom.github.io">Lei</a>
