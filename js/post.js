@@ -28,7 +28,7 @@ $(document).ready(function(){
         var href = $(this).attr('href');
         if(href){
             if(href.indexOf('#') == 0){
-            }else if ( href.indexOf('/') == 0 || href.toLowerCase().indexOf('ningg.github.com')>-1 ){
+            }else if ( href.indexOf('/') == 0 || href.toLowerCase().indexOf('dadarom.github.com')>-1 ){
             }else if ($(element).has('img').length){
             }else{
                 $(this).attr('target','_blank');
@@ -205,7 +205,7 @@ $(document).ready(function(){
 
 	//***********************
     //**评论的代码也删掉哦***
-    window.disqus_shortname = 'ningg'; // required: replace example with your forum shortname(register on DISQUS)
+    window.disqus_shortname = 'dadaromgithubio'; // required: replace example with your forum shortname(register on DISQUS)
     
 	(function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
