@@ -4,13 +4,109 @@
    <title>dadarom.github.io</title>
    <link href="http://dadarom.github.io/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://dadarom.github.io" rel="alternate" type="text/html" />
-   <updated>2015-01-02T21:38:29+08:00</updated>
+   <updated>2015-01-03T11:09:05+08:00</updated>
    <id>http://dadarom.github.io</id>
    <author>
      <name></name>
      <email></email>
    </author>
 
+   
+   <entry>
+     <title>Hadoop Open-Source Reading</title>
+     <link href="http://dadarom.github.com/hadoop%20souce%20code"/>
+     <updated>2015-01-03T00:00:00+08:00</updated>
+     <id>http://ningg.github.com/hadoop souce code</id>
+     <content type="html">&lt;h2 id=&quot;common&quot;&gt;Common&lt;/h2&gt;
+
+&lt;h3 id=&quot;auth&quot;&gt;auth&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;filter&lt;/code&gt; &lt;code&gt;handler&lt;/code&gt; &lt;code&gt;token&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;conf&quot;&gt;conf&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Configured&lt;/code&gt; &lt;code&gt;ConfServlet&lt;/code&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ReconfigurableBase&lt;/code&gt; &lt;code&gt;ReconfigurationServlet&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hdfs&quot;&gt;Hdfs&lt;/h2&gt;
+
+&lt;h2 id=&quot;mapreduce&quot;&gt;MapReduce&lt;/h2&gt;
+
+&lt;h2 id=&quot;yarn&quot;&gt;YARN&lt;/h2&gt;
+
+&lt;p&gt;example&lt;code&gt;SSH Keys&lt;/code&gt;example&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+example`SSH Keys`example  
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初步分析，在[GitHub]上搭建博客，实质是：将自己的博客内容上传到GitHub上&lt;em&gt;（因为GitHub提供了空间）；&lt;/em&gt;总结一下，对应3个必要步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;GitHub上创建工程、并且能够将GitHub上的文件/代码，下载到本地；&lt;/li&gt;
+  &lt;li&gt;将本地的文件/代码，上传到GitHub上；&lt;/li&gt;
+  &lt;li&gt;配置GitHub，使其对外提供私人博客的访问页面；&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;* \&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;single asterisk&lt;/em&gt;&lt;br /&gt;
+&lt;strong&gt;double asterisk&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;double asterisk&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;single underscore&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;double underscore&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
+
+&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
+
+&lt;p&gt;详细阅读”&lt;strong&gt;3.2如何搭建博客&lt;/strong&gt;“中提到的&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The overriding design goal for Markdown’s
+formatting syntax is to make it as readable
+as possible. The idea is that a 
+1 &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;/*
+If you have sufficient control over the publishing process
+(e.g. you are running Jekyll yourself), an easy solution is
+to switch the markdown parser to one that supports TeX.
+*/
+
+//For example, using kramdown:
+gem install kramdown
+
+//Change the markdown line in _config.yml to
+markdown: kramdown
+
+//and add something like
+&amp;lt;script type=&quot;text/javascript&quot; 
+src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;
+&amp;lt;/script&amp;gt;
+//to _layouts/default.html. 
+
+//Now you can simply mark any mathematics in your posts with $$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;www.csdn.net&quot;&gt;CSDN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/set-up-git&quot;&gt;安装使用Git（GitHub上传、下载文件的工具）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/side-background.jpg&quot; alt=&quot;git-github&quot; /&gt;&lt;/p&gt;
+
+</content>
+   </entry>
    
    <entry>
      <title>linux wiki</title>
@@ -78,6 +174,8 @@ example`SSH Keys`example
 &lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
 
 &lt;p&gt;详细阅读”&lt;strong&gt;3.2如何搭建博客&lt;/strong&gt;“中提到的&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Free Software, Hell Yeah!&lt;/strong&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;The overriding design goal for Markdown’s

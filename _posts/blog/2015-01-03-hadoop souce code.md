@@ -1,9 +1,29 @@
 ---
 layout: post
-title: Example
-description: 存在感对于每个人的生活有多么的重要，可能平时并不是太关注，其实他就是生活的全部
-category: blog
+title: Hadoop Open-Source Reading
+description: source code reading 
+categories: open-source hadoop
 ---
+
+## Common
+
+### auth
+
+`filter` `handler` `token`
+
+### conf
+
+`Configured` `ConfServlet` 
+
+`ReconfigurableBase` `ReconfigurationServlet`
+ 
+## Hdfs
+
+## MapReduce 
+
+## YARN
+
+
 
 example`SSH Keys`example
 
@@ -38,8 +58,6 @@ Heading 2
 ---------
 
 详细阅读"__3.2如何搭建博客__"中提到的
-
-**Free Software, Hell Yeah!**
 
 > The overriding design goal for Markdown's
 > formatting syntax is to make it as readable
